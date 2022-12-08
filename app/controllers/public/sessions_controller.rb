@@ -2,19 +2,27 @@
 
 class Public::SessionsController < Devise::SessionsController
   # before_action :configure_sign_in_params, only: [:create]
-  
+
   before_action :customer_state, only: [:create]
-  
+
   # GET /resource/sign_in
   # def new
   #   super
   # end
 
   # POST /resource/sign_in
-  # def create
+  def create
   #   super
-  # end
-
+  end
+  
+  def reject_user
+    @costomer = Customer.find(params[:id])
+      if @costomer 
+        if @costomer.valid_password?(params[:costomer][:password]) &&  (@costomer.active_for_authentication? == true)
+        redirect_to new_registration_path
+        end
+      end
+  end
   # DELETE /resource/sign_out
   # def destroy
   #   super
@@ -27,10 +35,12 @@ class Public::SessionsController < Devise::SessionsController
   #   devise_parameter_sanitizer.permit(:sign_in, keys: [:attribute])
   # end
   protected
+  
   def customer_state
     @customer = Customer.find_by(email: params[:customer][:email])
     return if !@customer
-    if @customer.valid_password?(params[:customer][:password])
+    if @customer.valid_password?(params[:customer][:password]) && (@user.is_deleted == false)
+      redirect_to new_registration_path
     end
   end
 end
