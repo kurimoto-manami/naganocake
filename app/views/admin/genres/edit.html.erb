@@ -1,0 +1,15 @@
+<div class="container">
+  <div class="row">
+    <div class="col-sm-12 col-md-8 col-lg-5 px-5 px-sm-0 mx-auto">
+      <h1>ジャンル編集</h1>
+      <%= form_with model: @genre do |f| %>
+      <div>
+        <%= f.label :name, "ジャンル名" %>
+        <%= f.text_field :name, class: "form-control name"%>
+      </div>
+      <div>
+        <%= f.submit '保存', class: 'btn btn-primary ' %>
+      </div>
+    </div>
+  </div>
+</div>

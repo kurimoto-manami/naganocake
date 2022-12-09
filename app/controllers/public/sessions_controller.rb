@@ -15,14 +15,7 @@ class Public::SessionsController < Devise::SessionsController
   #   super
   end
   
-  def reject_user
-    @costomer = Customer.find(params[:id])
-      if @costomer 
-        if @costomer.valid_password?(params[:costomer][:password]) &&  (@costomer.active_for_authentication? == true)
-        redirect_to new_registration_path
-        end
-      end
-  end
+
   # DELETE /resource/sign_out
   # def destroy
   #   super
