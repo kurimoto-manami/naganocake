@@ -5,5 +5,6 @@ class Admin < ApplicationRecord
          :recoverable, :rememberable, :validatable
   belongs_to :public/items
   belongs_to :admin/items
+  has_one_attached :image
   
 end
