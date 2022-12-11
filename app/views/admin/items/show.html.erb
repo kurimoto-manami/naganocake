@@ -8,4 +8,25 @@
             <td>
               <%= image_tag @item.get_item_image(100,100) %>
             </td>
-            <td
+            <td>
+              <%= @item.name %>
+            </td>
+            <td>
+              <%= @item.price %>
+            </td>
+          </tr>
+          <tr>
+            <td>
+              <%= @item.introduction %>
+            </td>
+          </tr>
+          <tr>
+            <td><%= link_to "商品編集", item_path(@item.id) %></td>
+            |
+            <td><%= link_to "商品一覧", items_path %></td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</div>
