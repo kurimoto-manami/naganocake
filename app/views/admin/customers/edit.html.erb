@@ -1,0 +1,25 @@
+<div class="container">
+  <div class="row">
+    <div class="col-md-10 ">
+      <h2>会員情報編集</h2>
+        <% if @customer.errors.any? %>
+          <%= @customer.errors.count %>件の未入力項目があります。
+          <ul>
+            <% @customer.errors.full_messages.each do |message| %>
+              <li><%= message %></li>
+            <% end %>
+          </ul>
+        <% end %>
+        
+      <%= form_with model: @customer do |f| %>
+      <div class="form-group">
+        <%= f.label :is_deleted, "ステータス" %>
+        <%= f.text_field :is_deleted, autofocus: true, class: "form-control is_deleted" %>
+      </div>
+      <div class="form-group">
+        <%= f.submit "更新", class: "btn btn-secondary" %>
+      </div>
+      <% end %>
+    </div>
+  </div>
+</div>
