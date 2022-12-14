@@ -6,6 +6,6 @@ class Admin < ApplicationRecord
   belongs_to :items
   has_one_attached :image
   has_many :customers, dependent: :destroy
-  enum role: { public: 0, admin: 1 }
+  # enum role: { public: 0, admin: 1 }
 
 end

@@ -11,7 +11,7 @@
         </thead>
         <tbody>
           <tr>
-          <% @orders.each do |order| %>
+          <% @order.each do |order| %>
             <td>
               <%= @customer.name %>
             </td>
@@ -19,7 +19,7 @@
               <%= order.created_at %>
             </td>
             <td>
-              <%= link_to "注文詳細" order_path(order.id) %>
+              <%= link_to "注文詳細" order_path(@order.id) %>
             </td>
           <% end %>
           </tr>
