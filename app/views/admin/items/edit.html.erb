@@ -17,10 +17,6 @@
           <%= f.text_field :name, class: "form-control" %>
         </div>
         <div class="form-group">
-          <%= f.label :item_image, "商品画像" %>
-          <%= f.file_field :item_image, class: "form-control-file", accept: "image/*" %>
-        </div>
-        <div class="form-group">
           <%= f.label :introduction, "商品説明" %>
           <%= f.text_area :introduction, class: "form-control" %>
         </div>
@@ -28,14 +24,18 @@
           <%= f.label :price, "税抜価格" %>
           <%= f.text_field :price, class: "form-control" %>
         </div>
+        <div class="form-group">
+          <%= f.label :item_image, "商品画像" %>
+          <%= f.file_field :item_image, class: "form-control-file", accept: "image/*" %>
+        </div>
         <div class = "form-group">
           <%= f.submit '内容変更', class: "btn btn-success" %>
         </div>
         <% end %>
         <tr>
-          <td><%= link_to "商品詳細", item_path(@item.id) %></td>
+          <td><%= link_to "商品詳細", show_admin_item_path(@item.id) %></td>
           |
-          <td><%= link_to "商品一覧", items_path %></td>
+          <td><%= link_to "商品一覧", index_admin_items_path %></td>
         </tr>
       </div>
   </div>

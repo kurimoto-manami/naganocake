@@ -21,9 +21,9 @@
             </td>
           </tr>
           <tr>
-            <td><%= link_to "商品編集", item_path(@item.id) %></td>
+            <td><%= link_to "商品編集", edit_admin_item_path(@item.id) %></td>
             |
-            <td><%= link_to "商品一覧", items_path %></td>
+            <td><%= link_to "商品一覧", index_admin_items_path %></td>
           </tr>
         </tbody>
       </table>

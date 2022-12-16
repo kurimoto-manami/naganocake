@@ -1,5 +1,12 @@
 class Admin::ItemsController < ApplicationController
-  before_action :correct_admin, only: [:new, :create, :edit, :update]
+  # before_action :correct_admin, only: [:new, :create, :edit, :update]
+  before_action :authenticate_admin!
+  
+  def index
+    @items = Item.all
+    # @admin = current_admin
+    # @genre = genre.find(params[:id])
+  end
   
   def new
     @item = Item.new
@@ -7,26 +14,20 @@ class Admin::ItemsController < ApplicationController
   
   def create
     @item = Item.new(item_params)
-    @item.admin_id = currrent_admin.id
+    # @item.admin_id = currrent_admin.id
     if @item.save
       flash[:notice]="商品の新規登録に成功しました。"
-      redairect_to item_path(@item)
+      redairect_to admin_item_path(@item)
     else
-      @admin = @item.admin
-      @items = Item.all
+      # @admin = @item.admin
+      # @items = Item.all
       render :index
     end
   end
   
-  def index
-    @items = Item.all
-    @admin = current_admin
-    @genre = genre.find(params[:id])
-  end
-  
   def show
     @item = Item.find(params[:id])
-    @admin = @item.admin
+    # @admin = @item.admin
   end
   
   def edit
@@ -34,13 +35,13 @@ class Admin::ItemsController < ApplicationController
   end
   
   def update
-    @items = Item.all
+    # @items = Item.all
     @item = Item.find(params[:id])
     if @item.update(item_params)
       flash[:notice] = "更新できました。"
-      redirect_to item_path(@item.id)
+      redirect_to admin_item_path(@item)
     else
-      @admin = @item.admin
+      # @admin = @item.admin
       render :edit
     end
   end
@@ -58,4 +59,5 @@ class Admin::ItemsController < ApplicationController
       redirect_to items_path
     end
   end
+  
 end

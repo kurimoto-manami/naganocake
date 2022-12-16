@@ -7,9 +7,10 @@ Rails.application.routes.draw do
     registrations: "public/registrations",
     sessions: 'public/sessions'
   }
-
+  # root to: "homes#top"
   scope module: :public do
     root to: "homes#top"
+    get '/home/about' => 'homes#about',as:'about'
     resources :customers, only: [:show, :edit, :update]
     resources :items, only: [:index, :show]
     resources :cart_items, only: [:index, :update, :destroy, :destroy_all]
@@ -21,7 +22,7 @@ Rails.application.routes.draw do
 
   namespace :admin do
     root to: "homes#top"
-    resources :items, only: [:new, :create, :index, :show, :edit, :update]
+    resources :items, only: [:index, :new, :create, :show, :edit, :update]
     resources :genres, only: [:index, :create, :edit, :update]
     resources :customers, only: [:index, :show, :edit, :update]
     resources :orders, only: [:show, :update]

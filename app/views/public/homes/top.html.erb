@@ -1,1 +1,22 @@
-<h1>test</h1>
+<div>
+  <%= flash[:notice] %>
+</div>
+<div class="container">
+  <div class="row">
+    <div class="mx-auto col-11 col-sm-10 col-lg-8 col-xl-6">
+      <h1>ながのケーキ</h1>
+      <p>1つ1つ丁寧に手作りした洋菓子を</p>
+      <p>お気軽に自宅で家族と一緒に、</p>
+      <p>軽い手土産に、ご利用いただけます。</p>
+      
+      <div class="btn-wrapper col-10 mx-auto">
+        <div class="row">
+          <%= link_to "Log in", new_customer_session_path, class: "btn btn-info btn-sm btn-block mb-3 sign_in" %>
+        </div>
+        <div class="row">
+          <%= link_to "Sign up", new_customer_registration_path, class: "btn btn-success btn-block mb-3" %>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

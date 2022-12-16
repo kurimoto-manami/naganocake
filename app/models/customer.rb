@@ -9,8 +9,8 @@ class Customer < ApplicationRecord
   has_many :cart_items
   has_many :orders
   
-  validates :name
-  validates :status
+  # validates :name
+  # validates :status
 
   def active_for_authentication?
     super && (is_deleted == false)
