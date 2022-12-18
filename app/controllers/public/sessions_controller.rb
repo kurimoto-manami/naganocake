@@ -6,9 +6,9 @@ class Public::SessionsController < Devise::SessionsController
   before_action :customer_state, only: [:create]
 
   # GET /resource/sign_in
-  # def new
-  #   super
-  # end
+  def new
+    @customer = Customer.find(params[:id])
+  end
 
   # POST /resource/sign_in
   def create
@@ -17,9 +17,9 @@ class Public::SessionsController < Devise::SessionsController
   
 
   # DELETE /resource/sign_out
-  # def destroy
+  def destroy
   #   super
-  # end
+  end
 
   # protected
 
