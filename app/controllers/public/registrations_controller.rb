@@ -5,14 +5,19 @@ class Public::RegistrationsController < Devise::RegistrationsController
   before_action :configure_account_update_params, only: [:update]
 
   # GET /resource/sign_up
-  def new
-    
+  def after_sign_in_path_for(resource)
+    customer_path(current_customer)
   end
 
   # POST /resource
-  # def create
-  #   super
-  # end
+  def create
+    @customer = Customer.new(@customer_params)
+    if @customer.save
+      redairect_to customer_path(@customer)
+    else
+      render root_path
+    end
+  end
 
   # GET /resource/edit
   # def edit

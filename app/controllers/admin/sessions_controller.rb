@@ -5,7 +5,7 @@ class Admin::SessionsController < Devise::SessionsController
 
   # GET /resource/sign_in
   def new
-    @items = Item.new
+    
   end
 
   # POST /resource/sign_in
