@@ -1,0 +1,50 @@
+<div class="container">
+  <div class="row">
+    <div class="col-md-10">
+      <h2>マイページ</h2>
+      <table class="table table-hover table-inverse">
+        <thead>
+          <tr>
+            <th>登録情報</th>
+            <th><%= link_to "編集する", customer_url, class: 'btn-sm btn-primary' %></th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>氏名</td>
+            <td><%= @customer.last_name %> <%= @customer.first_name %></td>
+          </tr>
+          <tr>
+            <td>カナ</td>
+            <td><%= @customer.last_name_kana %> <%= @customer.first_name_kana %></td>
+          </tr>
+          <tr>
+            <td>郵便番号</td>
+            <td><%= @customer.postal_code %></td>
+          </tr>
+          <tr>
+            <td>住所</td>
+            <td><%= @customer.address %></td>
+          </tr>
+          <tr>
+            <td>電話番号</td>
+            <td><%= @customer.telephone_number %></td>
+          </tr>
+          <tr>
+            <td>メールアドレス</td>
+            <td><%= @customer.email %></td>
+          </tr>
+          
+          <tr>
+            <td>配送先</td>
+            <td><%= link_to '一覧を見る', addresses_path, class: 'btn-sm btn-primary' %></td>
+          </tr>
+          <tr>
+            <td>注文履歴</td>
+            <td><%= link_to '一覧を見る', orders_path, class: 'btn-sm btn-primary' %></td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</div>

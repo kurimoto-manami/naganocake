@@ -8,16 +8,20 @@ class Public::RegistrationsController < Devise::RegistrationsController
   def after_sign_in_path_for(resource)
     customer_path(current_customer)
   end
+  
+  def customer_params
+    params.require(:customer).permit(:name, :name_kana, :email, :postal_code, :address, :telephone_number, :password)
+  end
 
   # POST /resource
-  def create
-    @customer = Customer.new(@customer_params)
-    if @customer.save
-      redairect_to customer_path(@customer)
-    else
-      render root_path
-    end
-  end
+  # def create
+  #   @customer = Customer.new(@customer_params)
+  #   if @customer.save
+  #     redairect_to customer_path(@customer)
+  #   else
+  #     render root_path
+  #   end
+  # end
 
   # GET /resource/edit
   # def edit

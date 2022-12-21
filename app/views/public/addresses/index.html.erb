@@ -1,0 +1,40 @@
+<div class="container">
+  <div class="row">
+    <div class="col-md-10">
+      <h2>配送先登録/一覧</h2>
+      <table class="table table-hover table-inverse">
+        <thead>
+          <tr>
+            <th>郵便番号(ハイフンなし)</th>
+            <th><%= addresses.postal_code %></th>
+          </tr>
+          <tr>
+            <th>住所</th>
+            <th><%= addresses.address %></th>
+          </tr>
+          <tr>
+            <th>宛名</th>
+            <th><%= addresses.name %></th>
+            <th><%= link_to "新規投稿", addresses_path, class: "btn-btn-sm btn-success" %></th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>郵便番号</td>
+            <td>住所</td>
+            <td>宛名</td>
+            <td></td>
+          </tr>
+          <tr>
+          <% @addresses.each do |addresses| %>
+            <td><%= addresses.postal_code %></td>
+            <td><%= addresses.address %></td>
+            <td><%= addresses.name %></td>
+            <td><%= link_to "編集する", edit_address_path(@address.id), class: "btn-btn-sm btn-success" %> <%= link_to "削除する", address_path(@address.id), class: "btn-btn-sm btn-success" %></td>
+          <% end %>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</div>
