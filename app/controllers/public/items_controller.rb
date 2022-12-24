@@ -2,6 +2,7 @@ class Public::ItemsController < ApplicationController
 
   def index
     @items = Item.all
+    @customer_url
   end
   
   def show

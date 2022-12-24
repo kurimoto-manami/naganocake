@@ -6,15 +6,15 @@
         <tbody>
           <tr>
             <th>郵便番号(ハイフンなし)</th>
-            <th><%= addresses.postal_code %></th>
+            <th><%= @addresses.postal_code %></th>
           </tr>
           <tr>
             <th>住所</th>
-            <th><%= addresses.address %></th>
+            <th><%= @addresses.address %></th>
           </tr>
           <tr>
             <th>宛名</th>
-            <th><%= addresses.name %></th>
+            <th><%= @addresses.name %></th>
             <th><%= link_to "変更内容を保存", addresses_path, class: "btn-btn-sm btn-success" %></th>
           </tr>
         </tbody>

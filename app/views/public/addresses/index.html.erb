@@ -6,15 +6,15 @@
         <thead>
           <tr>
             <th>郵便番号(ハイフンなし)</th>
-            <th><%= addresses.postal_code %></th>
+            <th><%= @address.postal_code %></th>
           </tr>
           <tr>
             <th>住所</th>
-            <th><%= addresses.address %></th>
+            <th><%= @address.address %></th>
           </tr>
           <tr>
             <th>宛名</th>
-            <th><%= addresses.name %></th>
+            <th><%= @address.name %></th>
             <th><%= link_to "新規投稿", addresses_path, class: "btn-btn-sm btn-success" %></th>
           </tr>
         </thead>
