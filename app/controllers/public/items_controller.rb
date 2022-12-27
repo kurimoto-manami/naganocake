@@ -3,6 +3,7 @@ class Public::ItemsController < ApplicationController
   def index
     @items = Item.all
     @customer_url
+    @genres = Genre.all
   end
   
   def show

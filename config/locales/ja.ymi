@@ -180,7 +180,8 @@
       long: "%Y/%m/%d %H:%M"
       short: "%m/%d %H:%M"
     午後: 午後
-    
+  
+  ja:
     enums:
       order:
         payment_method:
