@@ -5,6 +5,9 @@
         <tbody>
           <tr>
             <td><h2>ショッピングカート</h2></td>
+            <td></td>
+            <td></td>
+            <td></td>
             <td><%= link_to "カートを空にする", destroy_all_path, class: "btn btn-sm btn-danger destroy_all_cart_item", method: :delete %></td>
           </tr>
         </tbody>
@@ -40,7 +43,7 @@
             <td></td>
           </tr>
           <tr>
-            <td><%= link_to "情報入力に進む", new_orders_path, class: "btn-btn-sm btn-success" %></td>
+            <td><%= link_to "情報入力に進む", new_order_path, class: "btn-btn-sm btn-success" %></td>
           </tr>
         </tbody>
       </table>
