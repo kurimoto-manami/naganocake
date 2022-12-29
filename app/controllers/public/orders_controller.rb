@@ -12,11 +12,14 @@ class Public::OrdersController < ApplicationController
   end
   
   def index
+    @orders = Order.all
     @orders = Order.find(params[:id])
   end
   
   def show
     @orders = Order.find(params[:id])
+    session[:cart] ||= {}
+    session[:cart]["#{params[:id]}"] = Product.find(params[:id])
   end
   
   def confirm
@@ -37,4 +40,5 @@ class Public::OrdersController < ApplicationController
   def address_params
     params.require(:order).permit(:name, :address)
   end
+  
 end

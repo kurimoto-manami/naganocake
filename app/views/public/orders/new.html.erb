@@ -1,4 +1,11 @@
 <div class="container">
   <div class="row">
     <div class="col-md-12">
-      
+      <h2>注文情報入力</h2>
+        <%= form_with(model: order, local: true) do |form| %>
+          <p>支払い方法</p>
+            <%= form.radio_button :payment_method, :クレジットカード %>
+            <%= form.radio_button :payment_method, :銀行振込 %>
+          <p>お届け先</p>
+            
+        <% end %>
