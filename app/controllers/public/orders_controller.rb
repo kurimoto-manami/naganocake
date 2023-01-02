@@ -2,6 +2,7 @@ class Public::OrdersController < ApplicationController
 
   def new
     @order = Order.new
+    @addresses = Address.all
   end
   
   def create
@@ -17,7 +18,8 @@ class Public::OrdersController < ApplicationController
   end
   
   def show
-    @orders = Order.find(params[:id])
+    @item = Item.find(params[:item_id])
+    @order = @item.order.new
     session[:cart] ||= {}
     session[:cart]["#{params[:id]}"] = Product.find(params[:id])
   end
