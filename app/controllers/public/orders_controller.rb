@@ -30,6 +30,7 @@ class Public::OrdersController < ApplicationController
   end
   
   def completion
+    
   end
   
   
