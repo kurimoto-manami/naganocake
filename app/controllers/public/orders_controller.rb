@@ -25,8 +25,11 @@ class Public::OrdersController < ApplicationController
   end
   
   def confirm
-    @item = Item.find(params[:item_id])
-    @order = @item.order.new(order_params)
+    @order = Order.new(order_params)
+    @address = Address.find(params[:order][:address_id])
+    @order.postal_code = @address.postal_code
+    @order.address = @address.address
+    @order.name = @address.name
   end
   
   def completion
@@ -37,7 +40,7 @@ class Public::OrdersController < ApplicationController
   private
 
   def order_params
-    params.require(:order).permit(:sipping_cost, :total_payment, :payment_method)
+    params.require(:order).permit(:payment_method, :postal_code, :address, :name)
   end
 
   def address_params
