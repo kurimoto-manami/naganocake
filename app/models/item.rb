@@ -1,6 +1,7 @@
 class Item < ApplicationRecord
   has_many :cart_items, dependent: :destroy
   has_many :order_detas
+  belongs_to :genres
   has_one_attached :image
   
 #   with_options presence: true do

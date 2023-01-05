@@ -1,8 +1,7 @@
 class Admin::HomesController < ApplicationController
 
   def top
-    @orders = Order.all
-    @orders = order.find(params[:id])
+    @orders = Order.page(params[:page])
     @customer = current_customer
   end
 

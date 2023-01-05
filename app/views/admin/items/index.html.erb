@@ -5,38 +5,26 @@
       <table class="table table-hover table-inverse">
         <thead>
           <tr>
-            <th>ジャンル</th>
-            <th>写真</th>
+            <th>商品ID</th>
             <th>商品名</th>
             <th>税抜価格</th>
+            <th>ジャンル</th>
+            <th>ステータス</th>
           </tr>
         </thead>
         <tbody>
           <tr>
           <% @items.each do |item| %>
+            <td><%= item.id %></td>
             <td>
-              <%= @genre.name %>
-            </td>
-            <td>
-              <%= image_tag item.get_item_image(100,100) %>
-            </td>
-            <td>
-              <%= link_to item_path(@item.id) do %>
+              <%= link_to item_path(item.id) do %>
                 <%= item.name %>
               <% end %>
             </td>
-            <td>
-              <%= item.price %>
-            </td>
+            <td><%= item.price %></td>
+            <td><%= item.genre_id %></td>
+            <td><%= item.is_active %></td>
           <% end %>
-          </tr>
-          <tr>
-            <td>
-              <% if @item.admin == current_admin %>
-                <%= link_to "新規投稿", new_item_path, class: "btn-btn-sm btn-success" %>
-                <%= link_to "ジャンル詳細", genre_path(@genre.id), class: "btn-btn-sm btn-success" %>
-              <% end %>
-            </td>
           </tr>
         </tbody>
       </table>
