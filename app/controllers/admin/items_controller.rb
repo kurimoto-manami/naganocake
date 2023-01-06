@@ -19,7 +19,6 @@ class Admin::ItemsController < ApplicationController
       flash[:notice]="商品の新規登録に成功しました。"
       redairect_to admin_item_path(@item)
     else
-      # @admin = @item.admin
       # @items = Item.all
       render :index
     end
@@ -27,7 +26,6 @@ class Admin::ItemsController < ApplicationController
   
   def show
     @item = Item.find(params[:id])
-    # @admin = @item.admin
   end
   
   def edit
@@ -41,7 +39,6 @@ class Admin::ItemsController < ApplicationController
       flash[:notice] = "更新できました。"
       redirect_to admin_item_path(@item)
     else
-      # @admin = @item.admin
       render :edit
     end
   end
