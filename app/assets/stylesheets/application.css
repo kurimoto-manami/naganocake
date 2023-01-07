@@ -13,3 +13,16 @@
  *= require_tree .
  *= require_self
  */
+.box {
+  background-color: black;
+  width:50px;
+  margin: 0 auto;
+  text-decoration:none;
+  text-align: right;
+  height:50px;
+  line-height:50px;
+  background:rgb(71, 172, 255);
+          box-shadow:0 3px 0 rgb(0, 247, 255);
+  color: #c0c0c0;
+  border-radius: 50%;
+}

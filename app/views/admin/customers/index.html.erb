@@ -19,7 +19,7 @@
               <%= customer.id %>
             </td>
             <td>
-              <%= link_to customer_path do %>
+              <%= link_to customer_path(customer.id) do %>
                 <%= customer.last_name %><%= customer.first_name %>
               <% end %>
             </td>
@@ -29,10 +29,8 @@
             <td>
               <%= customer.is_deleted %>
             </td>
-            <td>
-              <%= link_to customer_path(customer.id) do %>
-            </td>
           <% end %>
+          <%= paginate customers %>
           </tr>
         </tbody>
       </table>
