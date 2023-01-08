@@ -4,7 +4,7 @@
 <div class="container">
   <div class="row">
     <div class="col-sm-12 col-md-8 col-lg-5 px-5 px-sm-0 mx-auto">
-      <h1>商品登録</h1>
+      <h1>商品新規登録</h1>
       <% if @item.errors.any? %>
         <h3><%= @item.errors.count %>件の未入力項目があります。</h3>
         <ul>
@@ -13,8 +13,12 @@
           <% end %>
         </ul>
       <% end %>
-      
+
       <%= form_with model: @item do |f| %>
+      <div class="form-group">
+        <%= f.label :item_image, "商品画像" %>
+        <%= f.file_field :item_image, class: "form-control-file", accept: "image/*" %>
+      </div>
       <div class="form-group">
         <%= f.label :name, "商品名" %>
         <%= f.text_field :name, class: "form-control" %>
@@ -24,12 +28,19 @@
         <%= f.text_area :introduction, class: "form-control" %>
       </div>
       <div class="form-group">
-        <%= f.label :price, "税抜価格" %>
-        <%= f.text_field :price, class: "form-control" %>
+        <%= f.label :genre_id, "ジャンル" %>
+        <%= f.select :genre_id, options_from_collection_for_select(Genres.all, :id, :genre_display) %>
       </div>
       <div class="form-group">
-        <%= f.label :item_image, "商品画像" %>
-        <%= f.file_field :item_image, class: "form-control-file", accept: "image/*" %>
+        <%= f.label :price, "税抜価格" %>
+        <%= f.text_field :price, class: "form-control" %>円
+      </div>
+      <div class="form-group">
+        <%= f.label :is_active, "販売ステータス" %>
+        <%= f.radio_button :is_active, Item.is_actives.key(0) %>
+        <%= f.label :is_active_on_sale, Item.is_actives_i18n[:on_sale] %>
+        <%= f.radio_button :is_active, Item.is_actives.key(1) %>
+        <%= f.label :is_active_suspended, Item.is_actives_i18n[:suspended]%>
       </div>
       <div class="form-group">
         <%= f.submit "商品登録", class: "btn btn-success" %>

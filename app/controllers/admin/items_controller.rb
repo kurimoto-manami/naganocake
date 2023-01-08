@@ -1,17 +1,18 @@
 class Admin::ItemsController < ApplicationController
   # before_action :correct_admin, only: [:new, :create, :edit, :update]
   before_action :authenticate_admin!
-  
+
   def index
     @items = Item.page(params[:page])
     # @admin = current_admin
     # @genre = genre.find(params[:id])
   end
-  
+
   def new
     @item = Item.new
+    @genres = Genre.all
   end
-  
+
   def create
     @item = Item.new(item_params)
     # @item.admin_id = currrent_admin.id
@@ -23,15 +24,16 @@ class Admin::ItemsController < ApplicationController
       render :index
     end
   end
-  
+
   def show
     @item = Item.find(params[:id])
+    @genres = Genre.all
   end
-  
+
   def edit
     @item = Item.find(params[:id])
   end
-  
+
   def update
     # @items = Item.all
     @item = Item.find(params[:id])
@@ -42,13 +44,13 @@ class Admin::ItemsController < ApplicationController
       render :edit
     end
   end
-  
+
   private
-  
+
   def item_params
     params.require(:item).permit(:name, :introduction, :image, :genre_id, :price, :is_active)
   end
-  
+
   def corrent_admin
     @item = Item.find(params[:id])
     @admin = @item.admin
@@ -56,5 +58,5 @@ class Admin::ItemsController < ApplicationController
       redirect_to items_path
     end
   end
-  
+
 end

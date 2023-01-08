@@ -3,7 +3,7 @@
     <div class="col-md-10 ">
       <h2>商品一覧</h2>
         <div class="box">
-          <%= link_to new_admin_item_path(@item.id), class: "btn btn-outline-secondary btn-block" do %>
+          <%= link_to new_admin_item_path, class: "btn btn-outline-secondary btn-block" do %>
             <i class="fa-duotone fa-plus"></i>
           <% end %>
         </div>
@@ -30,7 +30,7 @@
             <td><%= item.genre_id %></td>
             <td><%= item.is_active %></td>
           <% end %>
-          <%= paginate items %>
+          <%= paginate @items %>
           </tr>
         </tbody>
       </table>

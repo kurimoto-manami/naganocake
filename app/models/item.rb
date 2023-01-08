@@ -3,7 +3,8 @@ class Item < ApplicationRecord
   has_many :order_detas
   belongs_to :genres
   has_one_attached :image
-  
+  enum is_active: { on_sale: 0, suspended: 1 }
+
 #   with_options presence: true do
 #   validates :name
 #   validates :introduction
@@ -11,5 +12,5 @@ class Item < ApplicationRecord
 #   validates :is_active
 #   validates :image
 #   end
-  
+
 end
