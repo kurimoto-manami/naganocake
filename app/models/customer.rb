@@ -15,8 +15,6 @@ class Customer < ApplicationRecord
     super && (is_deleted == false)
   end
   
-  enum status: {
-    normal: 0,
-    withdrawn: 1,
-  }
+  enum is_deleted: { valid: 0, invalid: 1 }
+
 end

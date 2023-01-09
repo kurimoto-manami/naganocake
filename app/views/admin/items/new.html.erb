@@ -29,7 +29,7 @@
       </div>
       <div class="form-group">
         <%= f.label :genre_id, "ジャンル" %>
-        <%= f.select :genre_id, options_from_collection_for_select(Genres.all, :id, :genre_display) %>
+        <%= f.select :genre_id, options_from_collection_for_select(@item.genres, :id, :genre_display) %>
       </div>
       <div class="form-group">
         <%= f.label :price, "税抜価格" %>

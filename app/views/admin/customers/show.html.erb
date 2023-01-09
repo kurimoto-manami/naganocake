@@ -4,27 +4,20 @@
 <div class="container">
   <div class="row">
     <div class="col-md-10 ">
-      <h2>会員情報詳細</h2>
+      <h2><%= @customer.last_name %><%= @customer.first_name %>さんの会員詳細</h2>
       <table class="table">
         <tbody>
-          <%# @customers.each do |customer| %>
+          <tr>
+            <td>会員ID</td>
+            <td><%= @customer.id %></td>
+          </tr>
           <tr>
             <td>顧客名</td>
-            <td><%= @customer.last_name %></td>
-            <td><%= @customer.first_name %></td>
+            <td><%= @customer.last_name %>  <%= @customer.first_name %></td>
           </tr>
           <tr>
             <td>フリガナ</td>
-            <td><%= @customer.last_name_kana %></td>
-            <td><%= @customer.first_name_kana %></td>
-          </tr>
-          <tr>
-            <td>電話番号</td>
-            <td><%= @customer.telephone_number %></td>
-          </tr>
-          <tr>
-            <td>メールアドレス</td>
-            <td><%= @customer.email %></td>
+            <td><%= @customer.last_name_kana %>  <%= @customer.first_name_kana %></td>
           </tr>
           <tr>
             <td>郵便番号</td>
@@ -35,12 +28,21 @@
             <td><%= @customer.address %></td>
           </tr>
           <tr>
+            <td>電話番号</td>
+            <td><%= @customer.telephone_number %></td>
+          </tr>
+          <tr>
+            <td>メールアドレス</td>
+            <td><%= @customer.email %></td>
+          </tr>
+          <tr>
+            <td>ステータス</td>
             <td><%= @customer.is_deleted %></td>
           </tr>
           <tr>
-            <td><%= link_to "情報編集", customer_path(@customer.id) %></td>
+            <td><%= link_to "編集する", edit_admin_customer_path(@customer.id), class: "btn btn-success" %></td>
+            <td><%= link_to "注文履歴一覧を見る", orders_path, class: "btn btn-primary" %></td>
           </tr>
-          <%# end %>
         </tbody>
       </table>
     </div>

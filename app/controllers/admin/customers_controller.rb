@@ -1,5 +1,5 @@
 class Admin::CustomersController < ApplicationController
-  before_action :correct_admin, only: [:index]
+  # before_action :correct_admin, only: [:index]
 
   def index
     @customers = Customer.page(params[:page])
@@ -7,12 +7,12 @@ class Admin::CustomersController < ApplicationController
   end
 
   def show
-    @customer = customer.find(params[:id])
+    @customer = Customer.find(params[:id])
     # @admin = @customer.admin
   end
 
   def edit
-    @customer = customer.find(params[:id])
+    @customer = Customer.find(params[:id])
   end
 
   def update
@@ -20,7 +20,7 @@ class Admin::CustomersController < ApplicationController
     @customer = Customer.find(params[:id])
     if @customer.update(customer_params)
       flash[:notice] = "更新できました。"
-      redirect_to customer_path(@customer.id)
+      redirect_to admin_customer_path(@customer.id)
     else
       # @admin = @customer.admin
       render :edit
