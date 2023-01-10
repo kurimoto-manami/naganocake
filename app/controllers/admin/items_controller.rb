@@ -11,14 +11,15 @@ class Admin::ItemsController < ApplicationController
   def new
     @item = Item.new
     @genres = Genre.all
+
   end
 
   def create
     @item = Item.new(item_params)
-    # @item.admin_id = currrent_admin.id
+    @items = Item.all
     if @item.save
       flash[:notice]="商品の新規登録に成功しました。"
-      redairect_to admin_item_path(@item)
+      redairect_to admin_item_path
     else
       # @items = Item.all
       render :index
@@ -27,7 +28,8 @@ class Admin::ItemsController < ApplicationController
 
   def show
     @item = Item.find(params[:id])
-    @genres = Genre.all
+    @genres = @item.genre
+    @items = Item.page(params[:page])
   end
 
   def edit
@@ -51,12 +53,12 @@ class Admin::ItemsController < ApplicationController
     params.require(:item).permit(:name, :introduction, :image, :genre_id, :price, :is_active)
   end
 
-  def corrent_admin
-    @item = Item.find(params[:id])
-    @admin = @item.admin
-    if(current_admin.id != @admin.id)
-      redirect_to items_path
-    end
-  end
+  # def corrent_admin
+  #   @item = Item.find(params[:id])
+  #   @admin = @item.admin
+  #   if(current_admin.id != @admin.id)
+  #     redirect_to items_path
+  #   end
+  # end
 
 end

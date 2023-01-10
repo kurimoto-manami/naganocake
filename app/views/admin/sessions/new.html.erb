@@ -3,7 +3,6 @@
     <div class = "mx-auto col-11 col-sm-10 col-lg-8 col-xl-6">
       <h2>管理者ログイン</h2>
 
-      <%#= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
       <%= form_with model: @admin, url:admin_session_path, local:true do |f| %>
         <div class="field"><br>
           <%= f.label :メールアドレス %>

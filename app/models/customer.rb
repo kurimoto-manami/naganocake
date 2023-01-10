@@ -7,14 +7,12 @@ class Customer < ApplicationRecord
   has_many :addresses
   has_many :cart_items, dependent: :destroy
   has_many :orders
-  
+
   # validates :name
   # validates :status
 
   def active_for_authentication?
     super && (is_deleted == false)
   end
-  
-  enum is_deleted: { valid: 0, invalid: 1 }
 
 end
