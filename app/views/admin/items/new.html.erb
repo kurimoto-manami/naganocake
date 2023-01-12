@@ -39,10 +39,8 @@
           <tr>
             <td><%= f.label :is_active, "販売ステータス" %></td>
             <td>
-              <%= f.radio_button :is_active, Item.is_actives.key(0) %>
-              <%= f.label :is_active_on_sale, Item.is_actives_i18n[:on_sale] %>
-              <%= f.radio_button :is_active, Item.is_actives.key(1) %>
-              <%= f.label :is_active_suspended, Item.is_actives_i18n[:suspended]%>
+              <%= f.radio_button :is_active, false %>販売中
+              <%= f.radio_button :is_active, true %>販売停止中
             </td>
           </tr>
           <tr>

@@ -26,20 +26,26 @@
           </tr>
         </thead>
         <tbody>
-          <tr>
           <% @items.each do |item| %>
+          <tr>
             <td><%= item.id %></td>
             <td>
-              <%= link_to item_path(item.id) do %>
+              <%= link_to admin_item_path(item.id) do %>
                 <%= item.name %>
               <% end %>
             </td>
             <td><%= item.price %></td>
             <td><%= item.genre_id %></td>
-            <td><%= item.is_active %></td>
+            <td>
+              <% if item.is_active == false %>
+                販売中
+              <% else %>
+                販売停止中
+              <% end %>
+            </td>
+          </tr>
           <% end %>
           <%= paginate @items %>
-          </tr>
         </tbody>
       </table>
     </div>

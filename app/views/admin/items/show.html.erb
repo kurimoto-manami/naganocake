@@ -5,25 +5,34 @@
       <table class="table">
         <tbody>
           <tr>
+            <td><%= image_tag @item.get_image(100,100) %></td>
+            <td>商品名</td>
+            <td><%= @item.name %></td>
+          </tr>
+          <tr>
+            <td>商品説明</td>
+            <td><%= @item.introduction %></td>
+          </tr>
+          <tr>
+            <td>ジャンル</td>
+            <td><%= @item.genre_id %></td>
+          </tr>
+          <tr>
+            <td>税込価格(税抜き価格)</td>
+            <td><%= %><%= @item.price %></td>
+          </tr>
+          <tr>
+            <td>販売ステータス</td>
             <td>
-              <%= image_tag @item.get_item_image(100,100) %>
-            </td>
-            <td>
-              <%= @item.name %>
-            </td>
-            <td>
-              <%= @item.price %>
+              <% if item.is_active == false %>
+                販売中
+              <% else %>
+                販売停止中
+              <% end %>
             </td>
           </tr>
           <tr>
-            <td>
-              <%= @item.introduction %>
-            </td>
-          </tr>
-          <tr>
-            <td><%= link_to "商品編集", edit_admin_item_path(@item.id) %></td>
-            |
-            <td><%= link_to "商品一覧", index_admin_items_path %></td>
+            <td><%= link_to "編集する", edit_admin_item_path(@item.id) %></td>
           </tr>
         </tbody>
       </table>
