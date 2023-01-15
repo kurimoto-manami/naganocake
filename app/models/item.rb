@@ -15,9 +15,13 @@ class Item < ApplicationRecord
     end
     image.variant(resize_to_limit: [width, height]).processed
   end
-  
-  def add_tax_sales_price
-    (self.sales_price * 1.10).round
+
+  # def add_tax_sales_price
+  #   (self.sales_price * 1.10).round
+  # end
+
+  def converting_to_jpy(price)
+    "#{price.to_i(:delimited, delimiter: ',')}円"
   end
 #   with_options presence: true do
 #   validates :name
