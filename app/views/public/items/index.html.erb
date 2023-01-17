@@ -1,30 +1,30 @@
 <div class="container">
   <div class="row">
-    <div class="col-lg-2">
+    <div class="col-lg-3">
       <table class="table">
         <tbody>
           <tr>
             <td><strong>ジャンル検索</strong></td>
           </tr>
           <% @genres.each do |genre| %>
-            <%= link_to admin_genres_path(@genre.id) do %>
-              <%= @genre.name %>
+            <%= link_to admin_genres_path do %>
+              <%= genre.name %>
             <% end %>
           <% end %>
         </tbody>
       </table>
     </div>
-    <div class="col-md-10">
+    <div class="col-md-9">
       <h2>商品一覧</h2>
       <div class="list-wrap">
         <% @items.each do |item| %>
-          <% if list.image.attached? %>
-            <%= image_tag item.item_image(100,100) %>
+          <% if item.image.attached? %>
+            <%= image_tag item.image, :size =>'100x100' %>
           <% else %>
-            <%= image_tag 'no_image', size: "200x200" %>
+            <%= image_tag 'no_image', size: "100x100" %>
           <% end %>
           <div class="list-item">
-            <%= link_to item_path(@item.id) do %>
+            <%= link_to item_path(item.id) do %>
               <%= item.name %>
             <% end %>
           </div>

@@ -35,7 +35,7 @@
               <% end %>
             </td>
             <td><%= item.price %></td>
-            <td><%= item.genre_id %></td>
+            <td><%= item.genre.name %></td>
             <td>
               <% if item.is_active == false %>
                 販売中
@@ -45,7 +45,13 @@
             </td>
           </tr>
           <% end %>
-          <%= paginate @items %>
+          <tr>
+            <td>
+              <div class="d-flex flex-center">
+                <%= paginate @items %>
+              </div>
+            </td>
+          </tr>
         </tbody>
       </table>
     </div>

@@ -4,21 +4,36 @@ class Public::AddressesController < ApplicationController
     @addresses = Address.all
     @address = Address.new
   end
-  
+
   def edit
     @address = Address.find(params[:id])
   end
-  
+
   def create
-  
+    @address = Address.new(address_params)
+    @addresses = Address.all
+    @addresss = Address.page(params[:page])
+    if @address.save
+      flash[:notice]="配送先の新規登録に成功しました。"
+      redirect_to addresses_path
+    else
+      render :index
+    end
   end
-  
+
   def update
-    
+    @address = Address.find(params[:id])
+    @address.update(address_params)
+    if @address.save
+      flash[:notice] = "You have updated user successfully."
+      redirect_to address_path(@address.id)
+    else
+      render :edit
+    end
   end
-  
+
   def destroy
-    
+
   end
 
   private

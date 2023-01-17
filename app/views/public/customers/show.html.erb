@@ -6,7 +6,7 @@
         <thead>
           <tr>
             <th>登録情報</th>
-            <th><%= link_to "編集する", edit_customer_path, class: 'btn-sm btn-primary' %></th>
+            <th><%= link_to "編集する", edit_customer_path, class: 'btn-sm btn-success' %></th>
           </tr>
         </thead>
         <tbody>
@@ -34,7 +34,6 @@
             <td>メールアドレス</td>
             <td><%= @customer.email %></td>
           </tr>
-          
           <tr>
             <td>配送先</td>
             <td><%= link_to '一覧を見る', addresses_path, class: 'btn-sm btn-primary' %></td>

@@ -56,7 +56,8 @@ end
 gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw, :jruby]
 
 gem 'devise'
-gem 'net-smtp'
+#gem 'net-smtp'
+gem 'net-http'
 gem "enum_help"
 gem 'kaminari','~> 1.2.1'
 gem 'image_processing', '~> 1.2'
