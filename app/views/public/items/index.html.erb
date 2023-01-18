@@ -1,20 +1,26 @@
 <div class="container">
   <div class="row">
-    <div class="col-lg-3">
+    <div class="col-lg-2">
       <table class="table">
-        <tbody>
+        <thead>
           <tr>
             <td><strong>ジャンル検索</strong></td>
           </tr>
+        </thead>
           <% @genres.each do |genre| %>
-            <%= link_to admin_genres_path do %>
-              <%= genre.name %>
-            <% end %>
+          <tbody>
+            <tr>
+              <td>
+                <%= link_to admin_genres_path do %>
+                  <%= genre.name %>
+                <% end %>
+              </td>
+            </tr>
           <% end %>
-        </tbody>
+          </tbody>
       </table>
     </div>
-    <div class="col-md-9">
+    <div class="col-md-10">
       <h2>商品一覧</h2>
       <div class="list-wrap">
         <% @items.each do |item| %>
@@ -29,7 +35,7 @@
             <% end %>
           </div>
           <div>
-            <%= item.price %>
+            ￥<%= item.price.to_s(:delimited) %>
           </div>
         <% end %>
       </div>
