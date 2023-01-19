@@ -30,7 +30,7 @@
       </table>
     </div>
     <div class="col-md-4">
-      <%= form_with model: @item, url: cart_item_path do |f| %>
+      <%= form_with model: @cart_item, url: cart_items_path do |f| %>
       <table class="table">
         <tbody>
           <tr>
@@ -44,7 +44,7 @@
           </tr>
           <tr>
             <td>
-              <%= f.hidden_field :item, :value => "amount" %>
+              <%= f.hidden_field :item_id, :value => @item.id %>
                 <%= f.select :amount, [['1',1],['2',2],['3',3],['4',4],['5',5]] %>
             <td><%= f.submit "カートに入れる", class: "btn-btn-sm btn-success" %></td>
           </tr>

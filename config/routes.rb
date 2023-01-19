@@ -13,7 +13,7 @@ Rails.application.routes.draw do
     get '/home/about' => 'homes#about',as:'about'
     resources :customers, only: [:show, :edit, :update,]
     resources :items, only: [:index, :show]
-    resources :cart_items, only: [:index, :update, :destroy]
+    resources :cart_items, only: [:index, :create, :update, :destroy]
     resources :orders, only: [:new, :create, :index, :show]
     resources :addresses, only: [:create, :index, :edit, :update, :destroy]
     get '/customers/:id/unsubscribe' => 'customers#unsubscribe', as: 'unsubscribe'
