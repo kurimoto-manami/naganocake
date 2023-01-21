@@ -3,6 +3,10 @@ class Public::OrdersController < ApplicationController
   def new
     @order = Order.new
     @addresses = Address.all
+    @cart_item = CartItem.find_by(customer_id: current_customer.id)
+    if !@cart_item.present?
+      redirect_to cart_items_path
+    end
   end
 
   def create
@@ -32,7 +36,7 @@ class Public::OrdersController < ApplicationController
   end
 
   def completion
-
+   
   end
 
 
@@ -42,8 +46,5 @@ class Public::OrdersController < ApplicationController
     params.require(:order).permit(:payment_method, :postal_code, :address, :name)
   end
 
-  def address_params
-    params.require(:order).permit(:name, :address)
-  end
 
 end

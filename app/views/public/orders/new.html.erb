@@ -2,22 +2,22 @@
   <div class="row">
     <div class="col-md-12">
       <h2>注文情報入力</h2>
-        <%= form_with(model: order, local: true) do |f| %>
+        <%= form_with(model: @order, local: true) do |f| %>
           <p>支払い方法</p>
             <%= f.radio_button :payment_method, Order.payment_methods.key(0) %>
-            <%= f.label :payment_method_credit_card, Order.payment_methods_i18n[:credit_card] %>
+            <%= f.label :payment_method_credit_card, Order.payment_methods_i18n[:credit_card] %><br>
             <%= f.radio_button :payment_method, Order.payment_methods.key(1) %>
             <%= f.label :payment_method_transfer, Order.payment_methods_i18n[:transfer]%>
         <% end %>
-        <%= form_with(model: address_url, local: true) do |f| %>
+        <%= form_with model: @order, url:confirm_path, local: true do |f| %>
           <p>お届け先</p>
-            <%= f.radio_button :address, Order.address.key(0) %>
-            <%= f.label :address_current_address, Order.address_i18n[:your_address] %>
-              <%= current_customer.customer_address %>
-            <%= f.radio_button :address, Order.address.key(1) %>
-            <%= f.label :address, "登録済住所から選択", {value: :female, style: "display: inline-block;"} %>
-              <%= f.select :address_id, options_from_collection_for_select(Address.all, :id, :address_display) %>
-            <%= f.radio_button :address, Order.address.key(2) %>
+            <%= f.radio_button :address, Order.addresses.key(0) %>
+            <%= f.label :address_current_address, Order.addresses_i18n[:your_address] %><br>
+              <%= current_customer.address %><br>
+            <%= f.radio_button :address, Order.addresses.key(1) %>
+            <%= f.label :address, "登録済住所から選択", {value: :female, style: "display: inline-block;"} %><br>
+              <%= f.select :address_id, options_from_collection_for_select(Address.all, :id, :address_display) %><br>
+            <%= f.radio_button :address, Order.addresses.key(2) %>
             <%= f.label :address, "新しいお届け先", {value: :female, style: "display: inline-block;"} %>
               <p>郵便番号</p>
               <%= f.text_field :postal_code %>
@@ -30,5 +30,4 @@
     </div>
   </div>
 </div>
-            
-        
+
