@@ -7,7 +7,7 @@ class CreateOrders < ActiveRecord::Migration[6.1]
       t.string :postal_code
       t.string :address
       t.string :name
-      t.integer :sipping_cost
+      t.integer :sipping_cost 
       t.integer :total_payment
       t.integer :payment_method
       t.integer :status

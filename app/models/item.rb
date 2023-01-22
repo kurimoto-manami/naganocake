@@ -20,9 +20,6 @@ class Item < ApplicationRecord
     (price * 1.1).floor
   end
 
-  # def add_tax_sales_price
-  #   (self.sales_price * 1.10).round
-  # end
 
   def converting_to_jpy(price)
     "#{price.to_i(:delimited, delimiter: ',')}円"

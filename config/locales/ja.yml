@@ -5,9 +5,9 @@ ja:
         credit_card: "クレジットカード"
         transfer: "銀行振込"
 
-      address:
-        your_address: "ご自身の住所"
-        registered_addresses: "登録済住所から選択"
-        new_shipping_address: "新しいお届け先"
+      # address:
+      #   your_address: "ご自身の住所"
+      #   registered_addresses: "登録済住所から選択"
+      #   new_shipping_address: "新しいお届け先"
 
 
