@@ -14,15 +14,15 @@ class Public::OrdersController < ApplicationController
     # @order = @item.order.new(order_params)
     @cart_items = current_customer.cart_items.all
     @order = current_customer.orders.new(order_params)
-      if  @order.save
+    if  @order.save
       @cart_items.each do |cart_item|
         cart_item.item.price * cart_item.amount
-        @order_detail = OrderDetail.new
-        @order_detail.item_id = cart_item.item_id
-        @order_detail.order_id = @order.id
-        @order_detail.amount = cart_item.amount
-        @order_detail.price = cart_item.item.with_tax_price
-        @order_detail.save
+        @order_details = OrderDetail.new
+        @order_details.item_id = cart_item.item_id
+        @order_details.order_id = @order.id
+        @order_details.amount = cart_item.amount
+        @order_details.price = cart_item.item.with_tax_price
+        @order_details.save!
       end
       redirect_to completion_path
       @cart_items.destroy_all
@@ -38,10 +38,12 @@ class Public::OrdersController < ApplicationController
   end
 
   def show
-    @item = Item.find(params[:item_id])
-    @order = @item.order.new
-    session[:cart] ||= {}
-    session[:cart]["#{params[:id]}"] = Product.find(params[:id])
+    @order_details = OrderDetail.where(order_id: params[:id])
+    @order = Order.find(params[:id])
+    # @item = Item.find(params[:item_id])
+    # @order = @item.order.new
+    # session[:cart] ||= {}
+    # session[:cart]["#{params[:id]}"] = Product.find(params[:id])
   end
 
   def confirm
@@ -49,6 +51,7 @@ class Public::OrdersController < ApplicationController
     # @order = Order.new(order_params)
     @address = Address.find(params[:order][:address_id])
     @order = current_customer.orders.new(order_params)
+    # @order = Order.new(customer_id: current_customer.id)
     if params[:order][:address_serect] == "0"
       @order.postal_code = current_customer.postal_code
       @order.address = current_customer.address
@@ -66,17 +69,17 @@ class Public::OrdersController < ApplicationController
   end
 
   def completion
-
+    
   end
 
 
   private
 
   def order_params
-    params.require(:order).permit(:payment_method, :postal_code, :address, :name, :sipping_cost)
+    params.require(:order).permit(:payment_method, :postal_code, :address, :name, :sipping_cost, :customer_id, :status)
   end
 
   def address_params
-    params.require(:order).permit(:name, :address, :postal_code)
+    params.require(:address).permit(:name, :postal_code, :address)
   end
 end
