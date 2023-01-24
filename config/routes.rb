@@ -15,12 +15,12 @@ Rails.application.routes.draw do
     resources :items, only: [:index, :show]
     delete '/cart_items/destroy_all' => 'cart_items#destroy_all', as: 'destroy_all'
     resources :cart_items, only: [:index, :create, :update, :destroy]
+    post '/orders/confirm' => 'orders#confirm', as: 'confirm'
+    get '/orders/completion' => 'orders#completion', as: 'completion'
     resources :orders, only: [:new, :create, :index, :show]
     resources :addresses, only: [:create, :index, :edit, :update, :destroy]
     get '/customers/:id/unsubscribe' => 'customers#unsubscribe', as: 'unsubscribe'
     patch '/customers/:id/withdrawal' => 'customers#withdrawal', as: 'withdrawal'
-    post '/orders/confirm' => 'orders#confirm', as: 'confirm'
-    get '/orders/completion' => 'orders#completion', as: 'completion'
   end
 
   namespace :admin do
@@ -28,7 +28,7 @@ Rails.application.routes.draw do
     resources :items, only: [:index, :new, :create, :show, :edit, :update]
     resources :genres, only: [:index, :create, :edit, :update]
     resources :customers, only: [:index, :show, :edit, :update]
-    resources :orders, only: [:index, :show, :update]
+    resources :orders, only: [:show, :update]
     resources :order_details, only: [:update]
   end
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
