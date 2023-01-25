@@ -23,8 +23,8 @@
           <%= form_with model: @order, url: admin_order_path do |f| %>
           <tr>
             <td>注文ステータス</td>
-            <td><%= f.hidden_field :status, :value => @order.id %>
-                <%= f.select :status_i18n, [['wait_payment',0],['confirm_payment',1],['making',2],['preparing_ship',3],['finish_prepare',4]] %>
+            <td>
+              <%= f.select :status, Order.statuses.keys.map{|k| [I18n.t("enums.order.status.#{k}"), k]} %>
             </td>
             <td><%= f.submit "更新", class: "btn-btn-sm btn-success" %></td>
           </tr>
@@ -48,10 +48,9 @@
             <td><%= order_detail.price.to_s(:delimited) %></td>
             <td><%= order_detail.amount %></td>
             <td><%= order_detail.subtotal.to_s(:delimited) %></td>
-            <%= form_with model: @order, url: admin_order_path do |f| %>
+            <%= form_with model: @order, url: admin_order_path(@order.id) do |f| %>
             <td>
-              <%= f.hidden_field :making_status, :value => order_detail.id %>
-                <%= f.select :making_status_i18n, [['impossible_manufacture',0],['waiting_manufacture',1],['manufacturing',2],['finish',3]] %>
+              <%= f.select :making_status, OrderDetail.making_statuses.keys.map{|k| [I18n.t("enums.order_detail.making_status.#{k}"), k]} %>
             </td>
             <td><%= f.submit "更新", class: "btn-btn-sm btn-success" %></td>
             <% end %>

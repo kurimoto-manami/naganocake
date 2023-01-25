@@ -8,7 +8,7 @@ ja:
         wait_payment: '入金待ち'
         confirm_payment: '入金確認'
         making: '作成中'
-        preparing_ship: '発送準備中'
+        preparing_ship: '製作完了'
         finish_prepare: '発送済み'
     order_detail:
       making_status:
@@ -16,10 +16,5 @@ ja:
         waiting_manufacture: '製作待ち'
         manufacturing: '製作中'
         finish: '製作完了'
-
-      # address:
-      #   your_address: "ご自身の住所"
-      #   registered_addresses: "登録済住所から選択"
-      #   new_shipping_address: "新しいお届け先"
 
 

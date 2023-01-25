@@ -37,4 +37,13 @@ class Public::SessionsController < Devise::SessionsController
       redirect_to new_customer_registration_path
     end
   end
+
+  # def reject_customer
+  #   @customer = Customer.find(params[:id])
+  #     if @customer
+  #       if @customer.valid_password?(params[:user][:password]) &&  (@customer.active_for_authentication? == true)
+  #       redirect_to new_customer_registration
+  #     end
+  #   end
+  # end
 end

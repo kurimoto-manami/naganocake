@@ -50,12 +50,4 @@ class Admin::ItemsController < ApplicationController
     params.require(:item).permit(:name, :introduction, :image, :genre_id, :price, :is_active)
   end
 
-  # def corrent_admin
-  #   @item = Item.find(params[:id])
-  #   @admin = @item.admin
-  #   if(current_admin.id != @admin.id)
-  #     redirect_to items_path
-  #   end
-  # end
-
 end

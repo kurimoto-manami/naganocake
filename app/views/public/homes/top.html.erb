@@ -3,7 +3,7 @@
 </div>
 <div class="container">
   <div class="row">
-    <div class="col-md-9 cover-img" style = "background-image : url('app/assets/images/no_image.jpg');">
+    <div class="col-md-12 cover-img" style = "background-image : url('app/assets/images/no_image.jpg');">
       <div class="cover-text text-center">
         <p>ようこそ、ながのCAKEへ！</p>
         <p>このサイトは、ケーキ販売のECサイトになります。</p>
@@ -11,25 +11,24 @@
         <p>購入には会員登録が必要になります。</p>
       </div>
     </div>
-    <div class="col-md-9">
+    <div class="col-md-12">
       <h2 class = "background-color #E5E4E2">新着商品</h2>
-        <div class = "new-item" >
-          <div class = "new-item-box">
-            <%#= image_tag @item.get_image(100,100) %>
-            <%#= @item.name %>
-            <%#= @item.price %>
-          </div>
-          <div class = "new-item-box">
-            <%#= image_tag @item.get_image(100,100) %>
-            <%#= @item.name %>
-            <%#= @item.price %>
-          </div>
-          <div class = "new-item-box">
-            <%#= image_tag @item.get_image(100,100) %>
-            <%#= @item.name %>
-            <%#= @item.price %>
-          </div>
-        </div>
+        <table>
+          <tbody>
+            <tr>
+              <% @items.each do |item| %>
+              <td>
+                <%= image_tag item.get_image(100,100) %><br>
+                <%= item.name %><br>
+                <%= item.price.to_s(:delimited) %>
+              </td>
+              <% end %>
+            </tr>
+          </tbody>
+        </table>
+            <div>
+              <%= link_to "全ての商品を見る", items_path %>
+            </div>
     </div>
   </div>
 </div>

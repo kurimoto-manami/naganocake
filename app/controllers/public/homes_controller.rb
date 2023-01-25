@@ -1,6 +1,5 @@
 class Public::HomesController < ApplicationController
   def top
-    @item = Item.all
-    # @item = Item.find(params[:id])
+    @items = Item.all.order( created_at: "DESC" ).limit(4)
   end
 end
