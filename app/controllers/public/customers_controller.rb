@@ -5,10 +5,18 @@ class Public::CustomersController < ApplicationController
   end
 
   def edit
+    customer_id = params[:id].to_i
+    unless customer_id == current_customer.id
+      redirect_to items_path
+    end
     @customer = Customer.find(params[:id])
   end
-  
+
   def update
+    customer_id = params[:id].to_i
+    unless customer_id == current_customer.id
+      redirect_to items_path
+    end
     @customer = Customer.find(params[:id])
     @customer.update(customer_params)
     if @customer.save

@@ -1,7 +1,7 @@
 class Public::AddressesController < ApplicationController
 
   def index
-    @addresses = Address.all
+    @addresses = current_customer.addresses
     @address = Address.new
   end
 
@@ -13,7 +13,6 @@ class Public::AddressesController < ApplicationController
     @address = Address.new(address_params)
     @address.customer_id = current_customer.id
     @addresses = Address.all
-    @address = Address.page(params[:page])
     if @address.save
       flash[:notice]="配送先の新規登録に成功しました。"
       redirect_to addresses_path
